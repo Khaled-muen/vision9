@@ -1,9 +1,10 @@
-<?php
+ <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\site3Controller;
 Route::prefix('site3')->name('site3.')->group(function ()
 {
     Route::get('/',[site3Controller::class,'index'])->name('index');
+    Route::get('about',[site3Controller::class,'about'])->name('about');
     Route::get('experience',[site3Controller::class,'experience'])->name('experience');
     Route::get('education',[site3Controller::class,'education'])->name('education');
     Route::get('skills',[site3Controller::class,'skills'])->name('skills');

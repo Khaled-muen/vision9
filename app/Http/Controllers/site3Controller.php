@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class site3Controller extends Controller
 {
+    public function about()
+    {
+        return redirect()->route('site3.index');
+    }
     public function index()
     {
         return view('site3.index');

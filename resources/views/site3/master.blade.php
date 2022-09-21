@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Resume - Start Bootstrap Theme</title>
+    <title>@yield('title',env('APP_NAME'))</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('site3asset/css/styles.css') }}" rel="stylesheet" />
+    @yield('styles')
 </head>
 
 <body id="page-top">
@@ -31,12 +32,18 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger {{Request()->routeIs('site3.index')?'active':' '}}" href="{{route('site3.index')}}">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger{{Request()->routeIs('site3.experience')?'active':' '}}" href="{{route('site3.experience')}}">Experience</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger{{Request()->routeIs('site3.education')?'active':' '}}" href="{{route('site3.education')}}">Education</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger{{Request()->routeIs('site3.skills')?'active':' '}}" href="{{route('site3.skills')}}">Skills</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger{{Request()->routeIs('site3.interests')?'active':' '}}" href="{{route('site3.interests')}}">Interests</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger{{Request()->routeIs('site3.awards')?'active':' '}}" href="{{route('site3.awards')}}">Awards</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.index') ?'active' : '' }}"href="{{ route('site3.index')}}">
+                        About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.experience') ?'active' : '' }}"
+                        href="{{ route('site3.experience') }}">Experience</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.education')?'active':'' }}"
+                        href="{{ route('site3.education') }}">Education</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.skills')?'active':'' }}" href="{{ route('site3.skills') }}">Skills</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.interests')?'active':'' }}"
+                        href="{{ route('site3.interests') }}">Interests</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger {{ request()->routeIs('site3.awards')?'active':'' }}" href="{{ route('site3.awards') }}">Awards</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -48,6 +55,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('site3asset/js/scripts.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

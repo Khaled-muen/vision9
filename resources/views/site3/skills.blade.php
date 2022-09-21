@@ -1,4 +1,7 @@
 @extends('site3.master')
+@section('title')
+Skills
+@endsection
 @section('content')
             <!-- Skills-->
             <section class="resume-section" id="skills">
@@ -41,4 +44,9 @@
                 </div>
             </section>
             <hr class="m-0" />
+@endsection
+@section('scripts')
+<script>
+    alert("hello khaled")
+</script>
 @endsection

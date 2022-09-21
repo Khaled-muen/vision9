@@ -1,4 +1,7 @@
 @extends('site3.master')
+@section('title')
+Awards
+@endsection
 @section('content')
 <!-- Awards-->
             <section class="resume-section" id="awards">

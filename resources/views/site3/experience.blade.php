@@ -1,4 +1,14 @@
 @extends('site3.master')
+@section('styles')
+<style>
+p{
+    color:red;
+}
+</style>
+@endsection
+@section('title')
+Experience
+@endsection
 @section('content')
 <section class="resume-section" id="experience">
     <div class="resume-section-content">
