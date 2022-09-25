@@ -10,8 +10,8 @@ Route::get('form2',[formController::class , 'form2'])->name('form2');
 Route::post('form2_data',[formController::class , 'form2_data'])->name('form2_data');
 
 Route::get('form3',[formController::class ,'form3'])->name('form3');
-Route::post('form3-data',[formController::class ,'form3-data'])->name('form3-data');
+Route::post('form3_data',[formController::class ,'form3_data'])->name('form3_data');
 
-Route::get('full_form',[formController::class,'full_form'])->name('full_form');
-Route::post('full_form_data',[formController::class,'full_form_data'])->name('full_form_data');
+Route::get('form4',[formController::class ,'form4'])->name('form4');
+Route::post('form4_data',[formController::class,'form4_data'])->name('form4_data');
 

@@ -5,104 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <title>Form 3</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <title>Document</title>
 </head>
+<style>
+    .contact-clean {
+        background: #f1f7fc;
+        padding: 80px 0;
+    }
 
+    @media (max-width:767px) {
+        .contact-clean {
+            padding: 20px 0;
+        }
+    }
+
+    .contact-clean form {
+        max-width: 480px;
+        width: 90%;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 4px;
+        color: #505e6c;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width:767px) {
+        .contact-clean form {
+            padding: 30px;
+        }
+    }
+
+    .contact-clean h2 {
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 28px;
+        margin-bottom: 36px;
+        color: inherit;
+    }
+
+    .contact-clean .form-group:last-child {
+        margin-bottom: 5px;
+    }
+
+    .contact-clean form .form-control {
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+        outline: none;
+        color: inherit;
+        padding-left: 12px;
+        height: 42px;
+    }
+
+    .contact-clean form .form-control:focus {
+        border: 1px solid #b2b2b2;
+    }
+
+    .contact-clean form textarea.form-control {
+        min-height: 100px;
+        max-height: 260px;
+        padding-top: 10px;
+        resize: vertical;
+    }
+
+    .contact-clean form .btn {
+        padding: 16px 32px;
+        border: none;
+        background: none;
+        box-shadow: none;
+        text-shadow: none;
+        opacity: 0.9;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 13px;
+        letter-spacing: 0.4px;
+        line-height: 1;
+        outline: none !important;
+    }
+
+    .contact-clean form .btn:hover {
+        opacity: 1;
+    }
+
+    .contact-clean form .btn:active {
+        transform: translateY(1px);
+    }
+
+    .contact-clean form .btn-primary {
+        background-color: #055ada !important;
+        margin-top: 15px;
+        color: #fff;
+    }
+</style>
 <body>
-    <div class="container">
-        <form>
+    <div class="contact-clean">
+        <form action="{{ route('form3_data') }}"method="POST">
+            {{-- <input type="text"disabled name="_token" value="{{ csrf_token() }}">
+            {{ csrf_field() }} --}}
             @csrf
-            <h2>Contact Us</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="first">First Name</label>
-                        <input type="text" class="form-control" placeholder="" id="first">
-                    </div>
-                </div>
-                <!--  col-md-6   -->
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="last">Last Name</label>
-                        <input type="text" class="form-control" placeholder="" id="last">
-                    </div>
-                </div>
-                <!--  col-md-6   -->
+            <h2 class="text-center">Contact us</h2>
+            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email"
+                    placeholder="Email"></div>
+            <div class="form-group">
+                <textarea class="form-control" rows="14" name="message" placeholder="Message"></textarea>
             </div>
-
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" class="form-control" placeholder="" id="company">
-                    </div>
-
-
-                </div>
-                <!--  col-md-6   -->
-
-                <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="phone">
-                    </div>
-                </div>
-                <!--  col-md-6   -->
-            </div>
-            <!--  row   -->
-
-
-            <div class="row">
-                <div class="col-md-6">
-
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="email">
-                    </div>
-                </div>
-                <!--  col-md-6   -->
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="url">Your Website <small>Please include http://</small></label>
-                        <input type="url" class="form-control" id="url" placeholder="url">
-                    </div>
-
-                </div>
-                <!--  col-md-6   -->
-            </div>
-            <!--  row   -->
-
-
-            <label for="contact-preference">When is the best time of day to reach you?</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="contact-preference" id="contact-preference" value="am"
-                        checked>Morning
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="contact-preference" id="contact-preference" value="pm"
-                        checked>Evening
-                </label>
-            </div>
-
-            <label for="newsletter">Would you like to recieve our email newsletter?</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="Sure!" id="newsletter"> Sure!
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group"><button class="btn btn-primary" type="submit">send</button></div>
         </form>
     </div>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

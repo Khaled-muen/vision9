@@ -39,7 +39,10 @@ class formController extends Controller
 
     public function form3_data(Request $request3)
     {
-        dd($request3->all());
+        $name=$request3->name;
+        $email=$request3->email;
+        $message=$request3->message;
+        return view('forms.f2table')->with('name',$name)->with('email',$email)->with('message',$message);
     }
 
     public function full_form()
@@ -52,5 +55,16 @@ class formController extends Controller
         // dd($request->except('_token'));
         // dd($request->only('name'));
 
+    }
+    public function form4(){
+        return view('forms.form4');
+    }
+    public function form4_data(Request $request4){
+        $request4->validate([
+            'name'=>'required|min:2',
+            'email'=>'required',
+            'age'=>'required'
+        ]);
+        dd($request4->all());
     }
 }
