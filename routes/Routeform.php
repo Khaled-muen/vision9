@@ -15,3 +15,5 @@ Route::post('form3_data',[formController::class ,'form3_data'])->name('form3_dat
 Route::get('form4',[formController::class ,'form4'])->name('form4');
 Route::post('form4_data',[formController::class,'form4_data'])->name('form4_data');
 
+Route::get('form5',[formController::class ,'form5'])->name('form5');
+Route::post('form5_data',[formController::class,'form5_data'])->name('form5_data');
