@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class formController extends Controller
 {
     public function form1()
@@ -41,21 +44,22 @@ class formController extends Controller
         $name = $request3->name;
         $email = $request3->email;
         $message = $request3->message;
+        Mail::to($email)->send(new TestMail($request3->except('_token')));
         return view('forms.f2table')->with('name', $name)->with('email', $email)->with('message', $message);
     }
 
-    public function full_form()
-    {
-        return view('forms.full_form');
-    }
+    // public function full_form()
+    // {
+    //     return view('forms.full_form');
+    // }
 
-    public function full_form_data(Request $request)
-    {
-        // dd($request->all(''));
-        // dd($request->except('_token'));
-        // dd($request->only('name'));
+    // public function full_form_data(Request $request)
+    // {
+    //     // dd($request->all(''));
+    //     // dd($request->except('_token'));
+    //     // dd($request->only('name'));
 
-    }
+    // }
     public function form4()
     {
         return view('forms.form4');
@@ -101,6 +105,34 @@ class formController extends Controller
             $request5->file('image')->move(public_path('file_uploads'),$name);
             dd($request5->all());
         }
-
-
+        public function full_form()
+        {
+            return view('forms.full_form');
+        }
+        public function full_form_data(Request $request6)
+        {
+            $request6->validate([
+                'name'=>'required|min:10|max:50',
+                'email'=>'required|email',
+                'phone'=>'required|numeric',
+                'age'=>'required|numeric|gt:18|lt:100',
+                'gender'=>'required',
+                'interests'=>'required',
+                'favorite'=>'required',
+                'image'=>'required|image|mimes:jpg,png|max:100000',
+                'country'=>'required'
+            ]);
+            $name_file=rand().time().$request6->file('image')->getClientOriginalName();
+            $request6->file('image')->move(public_path('upload'),$name_file);
+            $name=$request6->name;
+            $email=$request6->email;
+            $phone=$request6->phone;
+            $age=$request6->age;
+            $gender=$request6->gender;
+            $favorite=$request6->favorite;
+            $image=$name_file;
+            $interests=array($request6->interests);
+            $country=$request6->country;
+            return view('forms.f6table',compact('name','email','phone','age','gender','favorite','image','country','interests'));
+        }
 }
