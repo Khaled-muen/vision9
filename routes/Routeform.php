@@ -20,3 +20,6 @@ Route::post('form5_data',[formController::class,'form5_data'])->name('form5_data
 
 Route::get('full_form',[formController::class ,'full_form'])->name('full_form');
 Route::post('full_form_data',[formController::class ,'full_form_data'])->name('full_form_data');
+
+Route::get('contact-us',[formController::class ,'contact_us'])->name('contact_us');
+Route::post('contact-data',[formController::class ,'contact_us_data'])->name('contact_us_data');

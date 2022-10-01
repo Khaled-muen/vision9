@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contact_mail;
 use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -134,5 +135,30 @@ class formController extends Controller
             $interests=array($request6->interests);
             $country=$request6->country;
             return view('forms.f6table',compact('name','email','phone','age','gender','favorite','image','country','interests'));
+        }
+
+        public function contact_us()
+        {
+            return view('forms.contact_us');
+        }
+
+        public function contact_us_data(Request $request)
+        {
+            $request->validate([
+                'name'=>'required',
+                'email'=>'required',
+                'image'=>'required',
+                'message'=>'required'
+            ]);
+        $img_name=rand().time().$request->file('image')->getClientOriginalName();
+        $image=$img_name;
+        $name=$request->name;
+        $email=$request->email;
+        $message=$request->message;
+        $request->file('image')->move(public_path('uploads_image'),$img_name);
+        $data=$request->except('_token');
+        $data['image']=$img_name;
+        Mail::to($email)->send(new contact_mail($data));
+        return view('forms.contact_table',compact('name','email','image','message'));
         }
 }
